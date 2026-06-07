@@ -1,0 +1,184 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import StatsBar from "../components/StatsBar.astro";
+import Badges from "../components/Badges.astro";
+import BrandLogos from "../components/BrandLogos.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { services } from "../data/business";
+
+const seo = {
+  title: "Mayan Stonecrafters, Inc. | Countertops in Melbourne, FL",
+  description:
+    "Mayan Stonecrafters provides custom countertop fabrication & installation in Melbourne, FL. Granite, quartz & marble. Contact us at (321) 821-4381.",
+  keywords:
+    "countertops Melbourne FL, granite countertops, quartz countertops, countertop installation, countertop fabrication, cabinet refacing, kitchen remodeling, stone fabricators Brevard County, marble countertops, custom countertops, bathroom remodeling, Mayan Stonecrafters",
+  path: "/",
+};
+
+const products = [
+  {
+    title: "Custom-Made Countertops",
+    body: "Using quality materials to provide and meet your vision, we can bring your dream kitchen or bathroom to life with our custom style and design.",
+  },
+  {
+    title: "Granite Countertops",
+    body: "Use endless natural beauty to update your kitchen, or bathroom just by adding a unique granite countertop to your home or office space.",
+  },
+  {
+    title: "Quartz Countertops",
+    body: "Offering an alternative to granite, quartz has natural designs that are rich and luxurious for a contemporary look with very low maintenance required.",
+  },
+];
+
+const process = [
+  {
+    title: "Concept",
+    body: "We believe beauty is important, but so is functionality, which is why we work closely with our customers to make sure their kitchen is both practical and beautiful.",
+  },
+  {
+    title: "Design",
+    body: "We believe that design is an integral part of the process of creating the perfect kitchen, and we work tirelessly to ensure that every detail is carefully thought out and executed.",
+  },
+  {
+    title: "Development",
+    body: "We are proud of our team of highly trained and experienced professionals, and we continue to invest in their training and development to ensure that they always provide the best service to our clients.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What do granite fabricators in Melbourne FL do?",
+    a: "Granite fabricators in Melbourne FL cut, shape, and finish stone slabs for kitchens, baths, and outdoor spaces. They handle measuring, custom edges, and polishing so your countertops fit right and last long with durable results for daily home use projects.",
+  },
+  {
+    q: "What types of stone do stone fabricators Melbourne offer?",
+    a: "Stone fabricators Melbourne offers granite, quartz, and other surfaces. Quartz countertops Melbourne FL are popular because they resist stains, need little care, and keep their color. Fabricators help you choose slabs that match style, budget, and daily use needs and rooms.",
+  },
+  {
+    q: "Why is professional installation important for countertops?",
+    a: "Countertops installers Melbourne FL manage delivery and installation from start to finish. They equalize cabinets, place stone in safe locations, seal surfaces and clean. This is achieved through proper installation to avoid cracks, gaps and future problems of stone and surface Melbourne homes and families.",
+  },
+  {
+    q: "How do stone suppliers Melbourne FL help homeowners?",
+    a: "Stone suppliers Melbourne FL provide slabs from trusted brands, including Cambria countertops Melbourne FL. Local suppliers let you see full slabs, check colors in person, and get faster service. Working with a nearby stone fabricator Melbourne FL also improves support access.",
+  },
+  {
+    q: "How should I handle stone maintenance in Melbourne?",
+    a: "Stone maintenance Melbourne is simple with the right care. Wash every day with soft soap, do not use hard soap and dry spills quickly. Surfaces that are covered with granite in Melbourne should be sealed when recommended as a way of protecting them. The team of your stonecrafters, Melbourne FL can lead the care plans without issues.",
+  },
+];
+---
+
+<BaseLayout seo={seo}>
+  <Hero
+    eyebrow="Custom Made Countertops | Melbourne"
+    title="Your #1 Source for Cabinets and Countertops"
+    subtitle="Countertop installation, granite countertop installation and countertop fabrication. The ultimate destination for your dream kitchen and bath - #1 fabricators and installers in Brevard County."
+    showCtas={true}
+  />
+
+  <StatsBar />
+
+  <!-- Our Service -->
+  <section class="mx-auto max-w-7xl px-4 py-20">
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Our Service</p>
+    <h2 class="reveal mt-2 max-w-3xl text-3xl md:text-4xl">
+      We Offer the Highest Quality Fabrication and Installation Services
+    </h2>
+    <p class="reveal mt-5 max-w-3xl text-lg text-charcoal/80">
+      Using high-end materials and state-of-the-art equipment, our team is committed to ensure that
+      every project not only looks stunning but is also installed to meet your desired expectations.
+      "We approach each project with years of knowledge and expertise."
+    </p>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        products.map((p) => (
+          <div class="reveal rounded-lg border border-stone/40 bg-paper p-7">
+            <h3 class="font-display text-xl text-accent">{p.title}</h3>
+            <p class="mt-3 text-charcoal/80">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <BrandLogos />
+
+  <!-- Our Services grid -->
+  <section class="bg-stone-soft/40 py-20">
+    <div class="mx-auto max-w-7xl px-4">
+      <h2 class="reveal text-3xl md:text-4xl">Our Services</h2>
+      <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          services.map((s) => (
+            <ServiceCard title={s.title} href={`/services/${s.slug}/`} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Badges />
+
+  <!-- How We Work -->
+  <section class="mx-auto max-w-7xl px-4 py-20">
+    <h2 class="reveal text-3xl md:text-4xl">How We Work</h2>
+    <p class="reveal mt-4 max-w-3xl text-charcoal/80">
+      Mayan Stonecrafters is a company dedicated to transforming spaces with elegance and quality
+      through the creation and installation of marble kitchens. We focus on excellence in every
+      project we undertake and work with passion to ensure that every detail is perfect.
+    </p>
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      {
+        process.map((p, i) => (
+          <div class="reveal">
+            <span class="font-display text-5xl text-stone">0{i + 1}</span>
+            <h3 class="mt-2 font-display text-2xl">{p.title}</h3>
+            <p class="mt-3 text-charcoal/80">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="bg-charcoal py-20 text-paper">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h2 class="text-3xl md:text-4xl">Cast Your Impression With a Design</h2>
+      <p class="mt-6 text-lg leading-relaxed text-paper/85">
+        "At Mayan Stonecrafters, our goal is to leave a lasting impression on every kitchen design
+        project we work on. We strive to create unique, custom designs that reflect each client's
+        personality and lifestyle. Our passion for quality and craftsmanship is reflected in every
+        detail of our marble kitchens, and we take pride in knowing that our creations are much more
+        than just a countertop, but a work of art. Every kitchen we create has the potential to leave
+        a lasting impression on our customers' lives, and we are committed to making sure it is a
+        positive one that lasts over time."
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="mx-auto max-w-4xl px-4 py-20">
+    <h2 class="text-3xl md:text-4xl">FAQs</h2>
+    <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
+    <div class="mt-10 divide-y divide-stone/40">
+      {
+        faqs.map((f) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg">
+              {f.q}
+              <span class="text-accent transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-3 text-charcoal/80">{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

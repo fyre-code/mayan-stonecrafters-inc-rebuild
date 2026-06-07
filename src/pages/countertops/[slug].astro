@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DetailPage from "../../components/DetailPage.astro";
+import { countertopContent } from "../../data/countertopContent";
+import { countertops } from "../../data/business";
+
+export function getStaticPaths() {
+  return countertops.map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const c = countertopContent[slug as string];
+
+const seo = {
+  title: c.seoTitle,
+  description: c.seoDescription,
+  keywords: c.seoKeywords,
+  path: `/countertops/${slug}/`,
+};
+---
+
+<BaseLayout seo={seo}>
+  <DetailPage
+    eyebrow={c.eyebrow}
+    title={c.title}
+    intro={c.intro}
+    sections={c.sections}
+    faqs={c.faqs}
+  />
+</BaseLayout>

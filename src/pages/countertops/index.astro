@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { countertops } from "../../data/business";
+
+const seo = {
+  title: "Countertops in Melbourne, FL | Granite, Quartz, Marble | Mayan Stonecrafters",
+  description:
+    "Mayan Stonecrafters supplies high-quality stone countertops in Melbourne, FL - granite, quartz, marble, kitchen & bath. Call (321) 821-4381.",
+  keywords:
+    "countertops Melbourne FL, kitchen countertops, bathroom countertops, granite countertops, quartz countertops, marble countertops, stone countertops, countertop suppliers Brevard County, Mayan Stonecrafters",
+  path: "/countertops/",
+};
+
+const cardImages: Record<string, string> = {
+  cabinets: "/images/kitchen-cabinets-with-countertops-1.jpg",
+  granite: "/images/kitchen-with-stone-countertops-hero.jpg",
+  kitchen: "/images/kitchen-cabinets-with-countertops-2.jpg",
+};
+---
+
+<BaseLayout seo={seo}>
+  <Hero eyebrow="Melbourne" title="Countertops" compact={true} />
+
+  <section class="mx-auto max-w-4xl px-4 py-16">
+    <h2 class="font-display text-2xl md:text-3xl">Wide Range of Kitchen Countertops</h2>
+    <div class="mt-3 h-1 w-16 bg-accent"></div>
+    <p class="mt-5 text-lg leading-relaxed text-charcoal/85">
+      Based in Melbourne, Mayan Stonecrafters, Inc. offers a wide range of high-quality stone kitchen
+      countertops. Built on quality and unparalleled customer service, we supply a wide range of
+      kitchen countertops! By combining the latest technology with innovative solutions, our team will
+      develop an in-depth understanding of your needs and will then help you select the most
+      appropriate countertop. Our goal is to ensure your satisfaction!
+    </p>
+    <p class="mt-5 leading-relaxed text-charcoal/85">
+      For comprehensive kitchen countertop installation services, call Mayan Stonecrafters, Inc. We
+      offer expert design and installation services, always using top-quality materials. Whether for
+      residential or commercial projects, our commitment to deliver stellar services is guaranteed.
+    </p>
+  </section>
+
+  <section class="bg-stone-soft/40 py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <h2 class="text-3xl md:text-4xl">Explore Our Countertops</h2>
+      <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          countertops.map((c) => (
+            <ServiceCard
+              title={`${c.title} Countertops`}
+              href={`/countertops/${c.slug}/`}
+              image={cardImages[c.slug]}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-16">
+    <h2 class="text-center text-3xl md:text-4xl">Highly Accomplished Craftsmen</h2>
+    <p class="mx-auto mt-5 max-w-3xl text-center leading-relaxed text-charcoal/85">
+      At Mayan Stonecrafters, Inc., every countertop we create is custom-made to your exact needs and
+      requirements. Our highly accomplished craftsmen work carefully to ensure the design process is
+      smooth, and that each installation is seamless. Moreover, we pride ourselves on excellent
+      customer service. Contact us for a free estimate.
+    </p>
+    <div class="mt-12 grid gap-8 sm:grid-cols-2">
+      <div class="rounded-lg border border-stone/40 p-7">
+        <h3 class="font-display text-xl text-accent">What Sets Us Apart?</h3>
+        <ul class="mt-4 space-y-2 text-charcoal/85">
+          <li class="flex gap-2"><span class="text-accent">▪</span>Women Owned Business</li>
+          <li class="flex gap-2"><span class="text-accent">▪</span>Quality workmanship</li>
+          <li class="flex gap-2"><span class="text-accent">▪</span>Attention to detail</li>
+          <li class="flex gap-2"><span class="text-accent">▪</span>Variety of in-stock inventory</li>
+        </ul>
+      </div>
+      <div class="rounded-lg border border-stone/40 p-7">
+        <h3 class="font-display text-xl text-accent">Why Choose Us?</h3>
+        <ul class="mt-4 space-y-2 text-charcoal/85">
+          <li class="flex gap-2"><span class="text-accent">▪</span>Dedicated and professional team</li>
+          <li class="flex gap-2"><span class="text-accent">▪</span>High-quality services</li>
+          <li class="flex gap-2"><span class="text-accent">▪</span>Attention to detail</li>
+          <li class="flex gap-2"><span class="text-accent">▪</span>Free estimates</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

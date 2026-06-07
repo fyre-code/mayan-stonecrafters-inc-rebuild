@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  description?: string;
+  image?: string;
+}
+const { title, href, description, image } = Astro.props;
+---
+
+<a
+  href={href}
+  class="reveal group flex flex-col overflow-hidden rounded-lg border border-stone/40 bg-paper transition-all hover:-translate-y-1 hover:border-accent hover:shadow-xl"
+>
+  {image && (
+    <div class="aspect-[4/3] overflow-hidden">
+      <img src={image} alt={title} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+    </div>
+  )}
+  <div class="flex flex-1 flex-col p-6">
+    <h3 class="font-display text-xl group-hover:text-accent">{title}</h3>
+    {description && <p class="mt-2 flex-1 text-sm text-charcoal/75">{description}</p>}
+    <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-accent">
+      Learn More
+      <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" class="transition-transform group-hover:translate-x-1">
+        <path d="M3 7h8M7 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+    </span>
+  </div>
+</a>

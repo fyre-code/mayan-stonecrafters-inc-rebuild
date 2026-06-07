@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { areas } from "../../data/areas";
+
+const seo = {
+  title: "Areas We Serve | Brevard County, FL | Mayan Stonecrafters",
+  description:
+    "Mayan Stonecrafters serves all of Brevard County, FL with custom countertops & cabinets - Melbourne, Palm Bay, Cocoa & more. Call (321) 821-4381.",
+  keywords:
+    "areas we serve, Brevard County countertops, Melbourne FL, Palm Bay, Cocoa, Titusville, Rockledge, Satellite Beach, West Melbourne, countertop service areas, Mayan Stonecrafters",
+  path: "/areas-we-serve/",
+};
+---
+
+<BaseLayout seo={seo}>
+  <Hero
+    eyebrow="Brevard County, Florida"
+    title="Areas We Serve"
+    subtitle="As a family-owned business serving Brevard County for over a decade, Mayan Stonecrafters brings custom countertop fabrication and installation to communities across the county."
+    compact={true}
+  />
+
+  <section class="mx-auto max-w-5xl px-4 py-16">
+    <p class="max-w-3xl text-lg leading-relaxed text-charcoal/85">
+      From our Melbourne showroom and our Indian Harbour Beach location, we provide stone fabrication
+      and installation services for residential and commercial projects throughout Brevard County.
+      Select your area to learn why Mayan Stonecrafters is the right choice for your home or business.
+    </p>
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        areas.map((a) => (
+          <a
+            href={`/areas-we-serve/${a.slug}/`}
+            class="reveal group flex items-center justify-between rounded-lg border border-stone/40 bg-paper px-5 py-4 transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-lg"
+          >
+            <span class="font-display text-lg group-hover:text-accent">{a.name}</span>
+            <svg width="16" height="16" viewBox="0 0 14 14" aria-hidden="true" class="text-accent transition-transform group-hover:translate-x-1">
+              <path d="M3 7h8M7 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

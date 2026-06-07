@@ -1,0 +1,18 @@
+---
+import { business } from "../data/business";
+---
+
+<section class="bg-paper">
+  <div class="mx-auto max-w-7xl px-4 py-12">
+    <p class="mb-8 text-center text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/50">
+      Our Products & Brand Partners
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
+      {
+        business.brandPartners.map((b) => (
+          <img src={b.src} alt={b.alt} class="h-10 w-auto opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 md:h-12" loading="lazy" />
+        ))
+      }
+    </div>
+  </div>
+</section>

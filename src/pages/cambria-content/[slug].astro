@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { cambriaPages } from "../../data/business";
+
+export function getStaticPaths() {
+  return cambriaPages.map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+
+const cambria: Record<
+  string,
+  { title: string; iframe: string; intro: string; faqs?: { q: string; a: string }[] }
+> = {
+  "design-palette": {
+    title: "Design Palette",
+    iframe: "https://www.cambriausa.com/website-content/quartz-colors",
+    intro:
+      "Explore the full Cambria quartz design palette. Browse every color and pattern, then talk to our team about bringing your favorite Cambria design to life.",
+    faqs: [
+      { q: "What are the popular Cambria design palette collections in Florida?", a: "The popular Cambria design palette collections in Florida feature elegant, durable quartz surfaces with a variety of colors and patterns. Mayan Stone Crafters offers expert guidance to help homeowners choose the perfect Cambria design for their Florida homes." },
+      { q: "How can I explore Cambria quartz countertop designs in Florida?", a: "Mayan Stone Crafters provides extensive Cambria quartz countertop designs in Florida, showcasing sophisticated patterns and durable finishes that fit Florida's diverse kitchen and bathroom styles." },
+      { q: "Who are the trusted Cambria countertop fabricators in Florida?", a: "Trusted Cambria countertop fabricators in Florida, like Mayan Stone Crafters, ensure precise fabrication, custom fitting, and professional installation for premium quartz surfaces, enhancing Florida homeowners' remodeling projects." },
+      { q: "Are there eco-friendly Cambria countertop options in Florida?", a: "Yes, eco-friendly Cambria countertop options in Florida are offered by Mayan Stone Crafters, which uses sustainable materials and green fabrication practices to deliver beautiful, durable quartz countertops with minimal environmental impact." },
+      { q: "Where can I visit Cambria countertop showrooms in Florida?", a: "Cambria countertop showrooms in Florida, including Mayan Stone Crafters, feature a wide selection of design palettes and expert consultations to help homeowners select the perfect quartz surfaces for their kitchens and bathrooms." },
+    ],
+  },
+  "inspiration-gallery": {
+    title: "Inspiration Gallery",
+    iframe: "https://www.cambriausa.com/website-content/inspiration-gallery-residential",
+    intro: "Get inspired by real Cambria quartz installations. Browse the gallery, then let Mayan Stonecrafters, Inc. help you recreate the look in your home.",
+  },
+  "why-cambria": {
+    title: "Why Cambria",
+    iframe: "https://www.cambriausa.com/website-content/why-cambria",
+    intro: "Discover what makes Cambria quartz a standout choice for kitchens and baths, and why Mayan Stonecrafters, Inc. trusts it as a brand partner.",
+  },
+  "cambria-videos": {
+    title: "Cambria Videos",
+    iframe: "https://www.cambriausa.com/website-content/videos",
+    intro: "Watch Cambria's collection of videos to see the quartz surfaces in action and learn more about the brand.",
+  },
+};
+
+const c = cambria[slug as string];
+
+const seo = {
+  title: `${c.title} | Cambria Quartz | Mayan Stonecrafters, Melbourne FL`,
+  description: `Explore Cambria ${c.title.toLowerCase()} with Mayan Stonecrafters in Melbourne, FL. Premium quartz surfaces, expert fabrication. Call (321) 821-4381.`,
+  keywords:
+    "Cambria quartz Melbourne FL, Cambria countertops, Cambria design palette, Cambria inspiration gallery, why Cambria, Cambria videos, quartz surfaces, Cambria fabricators Brevard County, Mayan Stonecrafters",
+  path: `/cambria-content/${slug}/`,
+};
+---
+
+<BaseLayout seo={seo}>
+  <Hero eyebrow="Cambria" title={c.title} compact={true} />
+
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <p class="text-lg leading-relaxed text-charcoal/85">{c.intro}</p>
+
+    <div class="mt-8 overflow-hidden rounded-lg border border-stone/40">
+      <iframe
+        src={c.iframe}
+        title={`Cambria ${c.title}`}
+        loading="lazy"
+        class="h-[800px] w-full"
+        style="background:#FFFFFF;"></iframe>
+    </div>
+  </section>
+
+  {
+    c.faqs && (
+      <section class="mx-auto max-w-4xl px-4 pb-16">
+        <h2 class="font-display text-2xl md:text-3xl">FAQs</h2>
+        <div class="accent-bar mt-3 h-1 w-16 bg-accent" />
+        <div class="mt-6 divide-y divide-stone/40">
+          {c.faqs.map((f) => (
+            <details class="group py-4">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg">
+                {f.q}
+                <span class="text-accent transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-3 text-charcoal/80">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <CtaBand />
+</BaseLayout>

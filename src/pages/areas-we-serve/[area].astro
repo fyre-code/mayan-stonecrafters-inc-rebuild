@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import StatsBar from "../../components/StatsBar.astro";
+import Badges from "../../components/Badges.astro";
+import ContactInfo from "../../components/ContactInfo.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import { areas } from "../../data/areas";
+import { services } from "../../data/business";
+
+export function getStaticPaths() {
+  return areas.map((a) => ({ params: { area: a.slug }, props: { area: a } }));
+}
+
+const { area } = Astro.props;
+
+const seo = {
+  title: `Countertops in ${area.name}, FL | Mayan Stonecrafters`,
+  description:
+    `Mayan Stonecrafters provides custom countertops & cabinets in ${area.name}, FL. Family-owned, serving Brevard County. Contact us at (321) 821-4381.`.slice(
+      0,
+      155,
+    ),
+  keywords:
+    `countertops ${area.name}, ${area.name} FL countertops, granite ${area.name}, quartz countertops ${area.name}, cabinet refacing ${area.name}, countertop installation, stone fabricators ${area.name}, Brevard County, Mayan Stonecrafters`,
+  path: `/areas-we-serve/${area.slug}/`,
+};
+---
+
+<BaseLayout seo={seo}>
+  <Hero
+    eyebrow="Areas We Serve"
+    title={`Countertops in ${area.name}`}
+    subtitle={area.blurb}
+    showCtas={true}
+    compact={true}
+  />
+
+  <!-- About Mayan Stonecrafters (from real site copy) -->
+  <section class="mx-auto max-w-4xl px-4 py-16">
+    <h2 class="font-display text-2xl md:text-3xl">About Mayan Stonecrafters, Inc.</h2>
+    <div class="mt-3 h-1 w-16 bg-accent"></div>
+    <div class="mt-6 space-y-5 text-lg leading-relaxed text-charcoal/85">
+      <p>
+        Mayan Stonecrafters, Inc. is a family owned and operated business servicing the Brevard County
+        area. Gabriel and Fernanda started this dream over a decade ago with the goal of becoming the
+        leading countertop fabricators in Brevard County. We provide stone fabrication and installation
+        services for residential, commercial builders, as well as design consultants.
+      </p>
+      <p>
+        With over 15 years experience, we believe in producing the highest quality countertops. All of
+        our fabrication is done in shop to control the efficiency of quality. We keep different lots of
+        granite and quartz in stock for our customers' convenience, as well as purchase from different
+        suppliers, to allow our customers to choose from hundreds of different materials and styles. Our
+        team ensures that every project not only looks stunning, but is also installed to meet all
+        desired preferences.
+      </p>
+    </div>
+  </section>
+
+  <StatsBar />
+
+  <!-- Why Mayan Stonecrafters for THIS area (the one creative section) -->
+  <section class="bg-stone-soft/40 py-16">
+    <div class="mx-auto max-w-5xl px-4">
+      <h2 class="text-3xl md:text-4xl">Why Mayan Stonecrafters Is a Great Choice for {area.name}</h2>
+      <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {
+          area.whyReasons.map((r) => (
+            <div class="reveal rounded-lg border border-stone/40 bg-paper p-7">
+              <h3 class="font-display text-xl text-accent">{r.title}</h3>
+              <p class="mt-3 text-charcoal/85">{r.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Services available in this area -->
+  <section class="mx-auto max-w-7xl px-4 py-16">
+    <h2 class="text-3xl md:text-4xl">Our Services in {area.name}</h2>
+    <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => <ServiceCard title={s.title} href={`/services/${s.slug}/`} />)}
+    </div>
+  </section>
+
+  <Badges />
+
+  <section class="mx-auto max-w-5xl px-4 py-16">
+    <h2 class="text-center font-display text-2xl md:text-3xl">
+      Serving {area.name} &amp; All of Brevard County
+    </h2>
+    <p class="mx-auto mt-4 max-w-2xl text-center text-charcoal/80">
+      Contact us now to get a free estimate for your {area.name} project.
+    </p>
+    <div class="mt-10">
+      <ContactInfo />
+    </div>
+  </section>
+
+  <CtaBand text={`Contact us now to get a free estimate in ${area.name}.`} />
+</BaseLayout>

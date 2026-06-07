@@ -1,0 +1,61 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { buildMeta, type PageSeo } from "../data/seo";
+
+interface Props {
+  seo: PageSeo;
+}
+const { seo } = Astro.props;
+const meta = buildMeta(seo);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/jpeg" href="/images/favicon.jpg" />
+
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="keywords" content={meta.keywords} />
+    <meta name="author" content={meta.author} />
+    <link rel="canonical" href={meta.canonical} />
+
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={meta.url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={meta.siteName} />
+    <meta property="og:image" content={meta.image} />
+    <meta property="og:image:alt" content={meta.imageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.title} />
+    <meta name="twitter:description" content={meta.description} />
+    <meta name="twitter:url" content={meta.url} />
+    <meta name="twitter:image" content={meta.image} />
+    <meta name="twitter:image:alt" content={meta.imageAlt} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-paper text-ink antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+      >Skip to content</a
+    >
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

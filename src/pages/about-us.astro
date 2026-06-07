@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import StatsBar from "../components/StatsBar.astro";
+import Badges from "../components/Badges.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const seo = {
+  title: "About Us | Mayan Stonecrafters, Inc. | Melbourne, FL",
+  description:
+    "Mayan Stonecrafters is a family-owned countertop fabricator in Brevard County, FL. Over a decade serving Melbourne. Contact us at (321) 821-4381.",
+  keywords:
+    "about Mayan Stonecrafters, family owned countertops, Brevard County stone fabricators, Melbourne FL countertops, countertop installation contractors, Gabriel Fernanda, stone fabrication, commercial countertops, Mayan Stonecrafters",
+  path: "/about-us/",
+};
+
+const process = [
+  { title: "Concept", body: "We believe beauty is important, but so is functionality, which is why we work closely with our customers to make sure their kitchen is both practical and beautiful. With our commitment to quality and customer service, we're here to help you create the kitchen of your dreams." },
+  { title: "Design", body: "At Mayan Stonecrafters, we believe that design is an integral part of the process of creating the perfect kitchen, and we work tirelessly to ensure that every detail is carefully thought out and executed." },
+  { title: "Development", body: "We are proud of our team of highly trained and experienced professionals, and we continue to invest in their training and development to ensure that they always provide the best service to our clients." },
+];
+
+const expertise = [
+  { title: "Idea & Concept", body: "We start with your vision, collaborating closely to shape a design that stands out from the rest." },
+  { title: "Accuracy", body: "Every measurement, cut, and edge is handled with precision so each installation is seamless." },
+  { title: "Execution", body: "Our trained craftsmen bring premium materials and state-of-the-art equipment to every project." },
+];
+---
+
+<BaseLayout seo={seo}>
+  <Hero eyebrow="Who We Are" title="About Us" compact={true} />
+
+  <section class="mx-auto max-w-4xl px-4 py-16">
+    <h2 class="font-display text-2xl md:text-3xl">
+      #1 Countertop Installation Contractors in Brevard County, FL
+    </h2>
+    <div class="mt-3 h-1 w-16 bg-accent"></div>
+    <div class="mt-6 space-y-5 text-lg leading-relaxed text-charcoal/85">
+      <p>
+        Mayan Stonecrafters, Inc. is a family owned and operated business servicing the Brevard County
+        area. Gabriel and Fernanda started this dream over a decade ago with the goal of becoming the
+        leading countertop fabricators in Brevard County. Now, over a decade later, Gabriel and
+        Fernanda have successfully been a part of the growth and development of Central FL -
+        participating in wonderful projects in famous restaurants and bars, commercial offices,
+        government buildings and the great Patrick Space Force Base.
+      </p>
+      <p>
+        They are fully active and committed to their company. They are present on each job to ensure
+        quality and efficiency are met to our clients' satisfaction. It would not be the company it is
+        today without the hard work and perseverance of our employees. We provide stone fabrication and
+        installation services for residential, commercial builders, as well as design consultants.
+      </p>
+      <p>
+        With over 15 years experience, we believe in producing the highest quality countertops. To help
+        us achieve this goal, we have a trained staff, efficient system and state of the art equipment.
+        We have gained the experience throughout the years to produce high quality finishes. All of our
+        fabrication is done in shop to control the efficiency of quality. We keep different lots of
+        granite and quartz in stock for our customers' convenience, as well as purchase from different
+        suppliers, to allow our customers to choose from hundreds of different materials and styles.
+      </p>
+      <p class="border-l-4 border-accent pl-5 font-display text-xl not-italic text-ink">
+        Our Promise: Our team ensures that every project not only looks stunning, but is also installed
+        to meet all desired preferences.
+      </p>
+    </div>
+  </section>
+
+  <StatsBar />
+
+  <section class="mx-auto max-w-5xl px-4 py-16">
+    <h2 class="text-3xl md:text-4xl">How We Work</h2>
+    <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
+    <p class="mt-5 max-w-3xl leading-relaxed text-charcoal/85">
+      Mayan Stonecrafters is a company dedicated to transforming spaces with elegance and quality
+      through the creation and installation of marble kitchens. We focus on excellence in every project
+      we undertake and work with passion to ensure that every detail is perfect.
+    </p>
+    <div class="mt-10 grid gap-8 md:grid-cols-3">
+      {
+        process.map((p, i) => (
+          <div class="reveal">
+            <span class="font-display text-5xl text-stone">0{i + 1}</span>
+            <h3 class="mt-2 font-display text-2xl">{p.title}</h3>
+            <p class="mt-3 text-charcoal/80">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-stone-soft/40 py-16">
+    <div class="mx-auto max-w-5xl px-4">
+      <h2 class="text-3xl md:text-4xl">Our Expertise</h2>
+      <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
+      <p class="mt-5 max-w-3xl leading-relaxed text-charcoal/85">
+        At Mayan Stonecrafters, we specialize in creating unique, custom kitchens that stand out from
+        the rest, using premium materials including marble.
+      </p>
+      <div class="mt-10 grid gap-8 md:grid-cols-3">
+        {
+          expertise.map((e) => (
+            <div class="reveal rounded-lg border border-stone/40 bg-paper p-7">
+              <h3 class="font-display text-xl text-accent">{e.title}</h3>
+              <p class="mt-3 text-charcoal/80">{e.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Badges />
+  <CtaBand />
+</BaseLayout>

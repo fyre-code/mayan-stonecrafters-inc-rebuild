@@ -1,0 +1,130 @@
+---
+import { business, services, countertops, cambriaPages } from "../data/business";
+import { areas } from "../data/areas";
+
+const nav = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about-us/" },
+  {
+    label: "Services",
+    href: "/services/",
+    children: services.map((s) => ({ label: s.title, href: `/services/${s.slug}/` })),
+  },
+  {
+    label: "Countertops",
+    href: "/countertops/",
+    children: countertops.map((c) => ({ label: c.title, href: `/countertops/${c.slug}/` })),
+  },
+  {
+    label: "Cambria",
+    href: "/cambria-content/design-palette/",
+    children: cambriaPages.map((c) => ({ label: c.title, href: `/cambria-content/${c.slug}/` })),
+  },
+  {
+    label: "Areas We Serve",
+    href: "/areas-we-serve/",
+    children: areas.map((a) => ({ label: a.name, href: `/areas-we-serve/${a.slug}/` })),
+  },
+  { label: "Gallery", href: "/gallery/" },
+  { label: "Contact", href: "/contact-us/" },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-stone/40 bg-paper/95 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
+    <a href="/" class="flex items-center gap-3">
+      <img
+        src={business.logo}
+        alt="Mayan Stonecrafters, Inc. logo"
+        width="48"
+        height="48"
+        class="h-12 w-12"
+      />
+      <span class="hidden sm:flex flex-col leading-tight">
+        <span class="font-display text-lg tracking-tight">{business.name}</span>
+        <span class="text-[11px] uppercase tracking-widest text-charcoal/70"
+          >{business.tagline}</span
+        >
+      </span>
+    </a>
+
+    <a
+      href={business.phoneHref}
+      class="lg:hidden rounded bg-accent px-3 py-2 text-sm font-semibold text-paper"
+      >Call</a
+    >
+
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {
+          nav.map((item) => (
+            <li class="group relative">
+              <a
+                href={item.href}
+                class="flex items-center gap-1 rounded px-3 py-2 text-sm font-semibold uppercase tracking-wide text-charcoal transition-colors hover:text-accent"
+              >
+                {item.label}
+                {item.children && (
+                  <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" class="opacity-60">
+                    <path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                )}
+              </a>
+              {item.children && (
+                <div class="invisible absolute left-0 top-full z-50 min-w-56 translate-y-1 rounded-md border border-stone/40 bg-paper p-2 opacity-0 shadow-xl transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <ul class="grid gap-0.5">
+                    {item.children.map((c) => (
+                      <li>
+                        <a
+                          href={c.href}
+                          class="block rounded px-3 py-2 text-sm text-charcoal transition-colors hover:bg-stone-soft hover:text-ink"
+                        >
+                          {c.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a
+      href={business.phoneHref}
+      class="hidden lg:inline-flex items-center rounded bg-accent px-4 py-2 text-sm font-bold uppercase tracking-wide text-paper transition-transform hover:scale-105"
+      >{business.phone}</a
+    >
+  </div>
+
+  <!-- Mobile nav: native details/summary, no JS -->
+  <details class="lg:hidden border-t border-stone/40">
+    <summary class="cursor-pointer list-none px-4 py-3 text-sm font-semibold uppercase tracking-wide">
+      Menu
+    </summary>
+    <ul class="space-y-1 px-4 pb-4">
+      {
+        nav.map((item) => (
+          <li>
+            <a href={item.href} class="block py-2 text-sm font-semibold uppercase">
+              {item.label}
+            </a>
+            {item.children && (
+              <ul class="ml-3 border-l border-stone/40 pl-3">
+                {item.children.map((c) => (
+                  <li>
+                    <a href={c.href} class="block py-1.5 text-sm text-charcoal">
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+</header>

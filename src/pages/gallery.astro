@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { business } from "../data/business";
+
+const seo = {
+  title: "Gallery | Completed Projects | Mayan Stonecrafters, Melbourne FL",
+  description:
+    "Browse the Mayan Stonecrafters gallery of completed countertop & cabinet projects in Melbourne, FL. Get inspired, then call (321) 821-4381.",
+  keywords:
+    "Mayan Stonecrafters gallery, countertop projects Melbourne FL, kitchen countertop photos, granite gallery, quartz countertops, completed projects, countertop inspiration, Brevard County countertops, Mayan Stonecrafters",
+  path: "/gallery/",
+};
+---
+
+<BaseLayout seo={seo}>
+  <Hero eyebrow="Our Work" title="Gallery" compact={true} />
+
+  <section class="mx-auto max-w-7xl px-4 py-16">
+    <p class="max-w-3xl text-lg leading-relaxed text-charcoal/85">
+      Take a look at some of our completed countertop and cabinet projects. From custom kitchens to
+      bathroom vanities, our gallery shows the craftsmanship and quality we bring to every job across
+      Brevard County.
+    </p>
+
+    <div class="mt-10">
+      <script src="https://hyppohq.io/api/v1/widgets/embed/mayan-stonecrafters/gallery" async></script>
+      <noscript>
+        <p class="text-charcoal/80">
+          View more of our work on
+          <a href={business.social.instagram} class="text-accent underline">Instagram</a>.
+        </p>
+      </noscript>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

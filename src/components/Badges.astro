@@ -1,0 +1,13 @@
+---
+import { business } from "../data/business";
+---
+
+<section class="border-y border-stone/40 bg-stone-soft/40">
+  <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-12 gap-y-6 px-4 py-8">
+    {
+      business.badges.map((b) => (
+        <img src={b.src} alt={b.alt} class="h-16 w-auto md:h-20" loading="lazy" />
+      ))
+    }
+  </div>
+</section>

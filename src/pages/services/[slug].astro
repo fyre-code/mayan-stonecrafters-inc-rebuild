@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DetailPage from "../../components/DetailPage.astro";
+import { serviceContent } from "../../data/serviceContent";
+import { services } from "../../data/business";
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug } }));
+}
+
+const { slug } = Astro.params;
+const c = serviceContent[slug as string];
+
+const seo = {
+  title: c.seoTitle,
+  description: c.seoDescription,
+  keywords: c.seoKeywords,
+  path: `/services/${slug}/`,
+};
+---
+
+<BaseLayout seo={seo}>
+  <DetailPage
+    eyebrow={c.eyebrow}
+    title={c.title}
+    intro={c.intro}
+    sections={c.sections}
+    faqs={c.faqs}
+  />
+</BaseLayout>

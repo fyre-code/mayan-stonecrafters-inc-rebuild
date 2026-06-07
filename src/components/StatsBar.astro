@@ -1,0 +1,16 @@
+---
+import { business } from "../data/business";
+---
+
+<section class="bg-ink text-paper">
+  <div class="mx-auto grid max-w-7xl grid-cols-2 gap-px md:grid-cols-4">
+    {
+      business.stats.map((s) => (
+        <div class="reveal flex flex-col items-center justify-center px-4 py-10 text-center">
+          <span class="font-display text-5xl text-accent md:text-6xl">{s.value}</span>
+          <span class="mt-2 text-xs uppercase tracking-widest text-paper/70">{s.label}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
