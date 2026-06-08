@@ -6,3 +6,4 @@ dist/
 .env
 .env.*
 _capture/
+apply-blog-categories.ps1

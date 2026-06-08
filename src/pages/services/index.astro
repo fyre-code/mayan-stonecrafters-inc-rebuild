@@ -18,21 +18,28 @@ const seo = {
 <BaseLayout seo={seo}>
   <Hero eyebrow="Creative Options, Personalized Solutions" title="Services" compact={true} />
 
-  <section class="mx-auto max-w-4xl px-4 py-16">
-    <p class="text-lg leading-relaxed text-charcoal/85">
-      Here at Mayan Stonecrafters, Inc., we pride ourselves on coming up with innovative ideas that
-      let us better serve our clients. We're problem-solvers, innovators, and offer a complete range
-      of services designed to meet the various needs and wants of a diverse clientele. Our extensive
-      skills and industry knowledge offer our clients the ability to bring their unique visions to
-      life. At every turn, we strive to personalize our services, tailoring the experience according
-      to the specifications of the client. It's what we'd want from a boutique establishment such as
-      ourselves, and it's what you should expect too.
-    </p>
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid items-center gap-10 lg:grid-cols-2">
+      <p class="text-lg leading-relaxed text-charcoal/85">
+        Here at Mayan Stonecrafters, Inc., we pride ourselves on coming up with innovative ideas that
+        let us better serve our clients. We're problem-solvers, innovators, and offer a complete range
+        of services designed to meet the various needs and wants of a diverse clientele. Our extensive
+        skills and industry knowledge offer our clients the ability to bring their unique visions to
+        life. At every turn, we strive to personalize our services, tailoring the experience according
+        to the specifications of the client. It's what we'd want from a boutique establishment such as
+        ourselves, and it's what you should expect too.
+      </p>
+      <img
+        src="/images/services-intro.jpg"
+        alt="Granite kitchen island countertop with undermount sink by Mayan Stonecrafters in Melbourne, FL"
+        class="reveal w-full rounded-xl object-cover shadow-lg"
+        loading="lazy"
+      />
+    </div>
 
     <div class="mt-12 grid gap-8 md:grid-cols-2">
       <div>
         <h2 class="font-display text-2xl">No-Obligation Consultation</h2>
-        <div class="mt-3 h-1 w-16 bg-accent"></div>
         <p class="mt-4 text-charcoal/85">
           For us, the sooner we prove our worth, the better. That's why we offer a no-obligation
           consultation service: so that we can demonstrate the value of our services for ourselves.
@@ -44,7 +51,6 @@ const seo = {
       </div>
       <div>
         <h2 class="font-display text-2xl">Fast Response</h2>
-        <div class="mt-3 h-1 w-16 bg-accent"></div>
         <p class="mt-4 text-charcoal/85">
           Speed is key in any industry, and ours is no exception. With that in mind, we are proud to
           offer our clients swift service and rapid response times. We harness efficient
@@ -60,7 +66,6 @@ const seo = {
   <section class="bg-stone-soft/40 py-16">
     <div class="mx-auto max-w-7xl px-4">
       <h2 class="text-3xl md:text-4xl">What We Offer</h2>
-      <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((s) => <ServiceCard title={s.title} href={`/services/${s.slug}/`} />)}
       </div>

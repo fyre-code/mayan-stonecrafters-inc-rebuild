@@ -22,21 +22,45 @@ interface Props {
   faqs?: Faq[];
   image?: string;
   imageAlt?: string;
+  introImage?: string;
+  introImageAlt?: string;
 }
-const { eyebrow, title, intro, sections, faqs = [], image, imageAlt } = Astro.props;
+const {
+  eyebrow,
+  title,
+  intro,
+  sections,
+  faqs = [],
+  image,
+  imageAlt,
+  introImage,
+  introImageAlt,
+} = Astro.props;
 ---
 
 <Hero eyebrow={eyebrow} title={title} image={image} imageAlt={imageAlt} compact={true} />
 
-<article class="mx-auto max-w-4xl px-4 py-16">
-  {intro.map((p) => <p class="mb-5 text-lg leading-relaxed text-charcoal/85">{p}</p>)}
+<article class="mx-auto max-w-5xl px-4 py-16">
+  <div class={introImage ? "grid items-start gap-10 lg:grid-cols-[1fr_minmax(0,420px)]" : ""}>
+    <div>
+      {intro.map((p) => <p class="mb-5 text-lg leading-relaxed text-charcoal/85">{p}</p>)}
 
-  <a
-    href={business.phoneHref}
-    class="my-6 inline-flex items-center rounded bg-accent px-6 py-3 font-bold uppercase tracking-wide text-paper transition-transform hover:scale-105"
-  >
-    Call {business.phone}
-  </a>
+      <a
+        href={business.phoneHref}
+        class="my-2 inline-flex items-center rounded bg-accent px-6 py-3 font-bold uppercase tracking-wide text-paper transition-transform hover:scale-105"
+      >
+        Call {business.phone}
+      </a>
+    </div>
+    {introImage && (
+      <img
+        src={introImage}
+        alt={introImageAlt ?? title}
+        class="reveal w-full rounded-xl object-cover shadow-lg lg:sticky lg:top-28"
+        loading="lazy"
+      />
+    )}
+  </div>
 
   {
     sections.map((s) => (
@@ -47,7 +71,6 @@ const { eyebrow, title, intro, sections, faqs = [], image, imageAlt } = Astro.pr
           ) : (
             <h2 class="font-display text-2xl md:text-3xl">
               {s.heading}
-              <span class="mt-3 block h-1 w-16 bg-accent" />
             </h2>
           ))}
         {s.paras?.map((p) => <p class="mt-4 leading-relaxed text-charcoal/85">{p}</p>)}
@@ -69,7 +92,6 @@ const { eyebrow, title, intro, sections, faqs = [], image, imageAlt } = Astro.pr
     faqs.length > 0 && (
       <section class="mt-16">
         <h2 class="font-display text-2xl md:text-3xl">FAQs</h2>
-        <div class="accent-bar mt-3 h-1 w-16 bg-accent" />
         <div class="mt-6 divide-y divide-stone/40">
           {faqs.map((f) => (
             <details class="group py-4">

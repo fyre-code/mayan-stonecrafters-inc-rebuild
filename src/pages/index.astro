@@ -21,14 +21,17 @@ const products = [
   {
     title: "Custom-Made Countertops",
     body: "Using quality materials to provide and meet your vision, we can bring your dream kitchen or bathroom to life with our custom style and design.",
+    img: "/images/home-feature.jpg",
   },
   {
     title: "Granite Countertops",
     body: "Use endless natural beauty to update your kitchen, or bathroom just by adding a unique granite countertop to your home or office space.",
+    img: "/images/granite-countertops-intro.jpg",
   },
   {
     title: "Quartz Countertops",
     body: "Offering an alternative to granite, quartz has natural designs that are rich and luxurious for a contemporary look with very low maintenance required.",
+    img: "/images/quartz-countertops-intro.jpg",
   },
 ];
 
@@ -83,11 +86,10 @@ const faqs = [
 
   <!-- Our Service -->
   <section class="mx-auto max-w-7xl px-4 py-20">
-    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Our Service</p>
-    <h2 class="reveal mt-2 max-w-3xl text-3xl md:text-4xl">
+    <h2 class="reveal mx-auto max-w-3xl text-3xl md:text-4xl">
       We Offer the Highest Quality Fabrication and Installation Services
     </h2>
-    <p class="reveal mt-5 max-w-3xl text-lg text-charcoal/80">
+    <p class="reveal mx-auto mt-5 max-w-3xl text-center text-lg text-charcoal/80">
       Using high-end materials and state-of-the-art equipment, our team is committed to ensure that
       every project not only looks stunning but is also installed to meet your desired expectations.
       "We approach each project with years of knowledge and expertise."
@@ -96,9 +98,12 @@ const faqs = [
     <div class="mt-12 grid gap-6 md:grid-cols-3">
       {
         products.map((p) => (
-          <div class="reveal rounded-lg border border-stone/40 bg-paper p-7">
-            <h3 class="font-display text-xl text-accent">{p.title}</h3>
-            <p class="mt-3 text-charcoal/80">{p.body}</p>
+          <div class="reveal overflow-hidden rounded-lg border border-stone/40 bg-paper">
+            <img src={p.img} alt={p.title} class="aspect-[4/3] w-full object-cover" loading="lazy" />
+            <div class="p-7">
+              <h3 class="font-display text-xl text-accent">{p.title}</h3>
+              <p class="mt-3 text-charcoal/80">{p.body}</p>
+            </div>
           </div>
         ))
       }
@@ -111,7 +116,6 @@ const faqs = [
   <section class="bg-stone-soft/40 py-20">
     <div class="mx-auto max-w-7xl px-4">
       <h2 class="reveal text-3xl md:text-4xl">Our Services</h2>
-      <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
       <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           services.map((s) => (
@@ -164,7 +168,6 @@ const faqs = [
   <!-- FAQs -->
   <section class="mx-auto max-w-4xl px-4 py-20">
     <h2 class="text-3xl md:text-4xl">FAQs</h2>
-    <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
     <div class="mt-10 divide-y divide-stone/40">
       {
         faqs.map((f) => (

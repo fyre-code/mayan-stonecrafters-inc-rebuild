@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const seo = {
+  title: "Blog | Countertop Tips & Guides | Mayan Stonecrafters, Melbourne FL",
+  description:
+    "Read the Mayan Stonecrafters blog for countertop, cabinet & stone care tips in Melbourne, FL. Granite, quartz & marble guides. Call (321) 821-4381.",
+  keywords:
+    "Mayan Stonecrafters blog, countertop tips, granite care, quartz countertops, stone maintenance, cabinet installation, countertop guides, Melbourne FL, Brevard County, kitchen remodeling tips",
+  path: "/blog/",
+};
+---
+
+<BaseLayout seo={seo}>
+  <Hero eyebrow="News & Guides" title="Blog" compact={true} />
+
+  <section class="mx-auto max-w-5xl px-4 py-16">
+    <p class="max-w-3xl text-lg leading-relaxed text-charcoal/85">
+      Tips, guides, and insights on countertops, cabinets, and stone care from the team at Mayan
+      Stonecrafters, Inc.
+    </p>
+
+    <div class="mt-10">
+      <div id="hyppo-blog-mayan-stonecrafters-blog"></div>
+      <script is:inline>
+        (function () {
+          var d = document,
+            f = d.createElement("iframe");
+          f.src =
+            "https://hyppohq.io/blog/mayan-stonecrafters/mayan-stonecrafters-blog?embed=true";
+          f.style.cssText =
+            "width:100%;min-height:600px;border:none;overflow:hidden";
+          f.allowFullscreen = true;
+          f.loading = "lazy";
+          d.getElementById("hyppo-blog-mayan-stonecrafters-blog").appendChild(f);
+          window.addEventListener("message", function (e) {
+            if (e.data && e.data.type === "hyppo-blog-resize")
+              f.style.height = e.data.height + "px";
+          });
+        })();
+      </script>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

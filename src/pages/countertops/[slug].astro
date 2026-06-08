@@ -11,6 +11,17 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const c = countertopContent[slug as string];
 
+// Original site has intro photos for these countertop material pages
+const introImageMap: Record<string, string> = {
+  bathroom: "/images/bathroom-countertops-intro.jpg",
+  granite: "/images/granite-countertops-intro.jpg",
+  kitchen: "/images/kitchen-countertops-intro.jpg",
+  marble: "/images/marble-countertops-intro.jpg",
+  quartz: "/images/quartz-countertops-intro.jpg",
+  cabinets: "/images/kitchen-cabinets-with-countertops-1.jpg",
+};
+const introImage = introImageMap[slug as string];
+
 const seo = {
   title: c.seoTitle,
   description: c.seoDescription,
@@ -26,5 +37,7 @@ const seo = {
     intro={c.intro}
     sections={c.sections}
     faqs={c.faqs}
+    introImage={introImage}
+    introImageAlt={`${c.title} by Mayan Stonecrafters in Melbourne, FL`}
   />
 </BaseLayout>

@@ -26,33 +26,22 @@ const nav = [
     children: areas.map((a) => ({ label: a.name, href: `/areas-we-serve/${a.slug}/` })),
   },
   { label: "Gallery", href: "/gallery/" },
+  { label: "Blog", href: "/blog/" },
   { label: "Contact", href: "/contact-us/" },
 ];
 ---
 
-<header class="sticky top-0 z-40 border-b border-stone/40 bg-paper/95 backdrop-blur">
+<header class="relative z-40 border-b border-white/15 bg-[#4A798F] text-paper">
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
     <a href="/" class="flex items-center gap-3">
       <img
         src={business.logo}
         alt="Mayan Stonecrafters, Inc. logo"
-        width="48"
-        height="48"
-        class="h-12 w-12"
+        width="144"
+        height="144"
+        class="h-36 w-36"
       />
-      <span class="hidden sm:flex flex-col leading-tight">
-        <span class="font-display text-lg tracking-tight">{business.name}</span>
-        <span class="text-[11px] uppercase tracking-widest text-charcoal/70"
-          >{business.tagline}</span
-        >
-      </span>
     </a>
-
-    <a
-      href={business.phoneHref}
-      class="lg:hidden rounded bg-accent px-3 py-2 text-sm font-semibold text-paper"
-      >Call</a
-    >
 
     <nav aria-label="Primary" class="hidden lg:block">
       <ul class="flex items-center gap-1">
@@ -61,7 +50,7 @@ const nav = [
             <li class="group relative">
               <a
                 href={item.href}
-                class="flex items-center gap-1 rounded px-3 py-2 text-sm font-semibold uppercase tracking-wide text-charcoal transition-colors hover:text-accent"
+                class="flex items-center gap-1 rounded px-3 py-2 text-sm font-semibold uppercase tracking-wide text-paper transition-colors hover:text-accent"
               >
                 {item.label}
                 {item.children && (
@@ -72,7 +61,7 @@ const nav = [
               </a>
               {item.children && (
                 <div class="invisible absolute left-0 top-full z-50 min-w-56 translate-y-1 rounded-md border border-stone/40 bg-paper p-2 opacity-0 shadow-xl transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                  <ul class="grid gap-0.5">
+                  <ul class="dropdown-scroll grid max-h-[70vh] gap-0.5 overflow-y-auto pr-1">
                     {item.children.map((c) => (
                       <li>
                         <a
@@ -92,15 +81,10 @@ const nav = [
       </ul>
     </nav>
 
-    <a
-      href={business.phoneHref}
-      class="hidden lg:inline-flex items-center rounded bg-accent px-4 py-2 text-sm font-bold uppercase tracking-wide text-paper transition-transform hover:scale-105"
-      >{business.phone}</a
-    >
   </div>
 
   <!-- Mobile nav: native details/summary, no JS -->
-  <details class="lg:hidden border-t border-stone/40">
+  <details class="lg:hidden border-t border-white/15">
     <summary class="cursor-pointer list-none px-4 py-3 text-sm font-semibold uppercase tracking-wide">
       Menu
     </summary>
@@ -112,10 +96,10 @@ const nav = [
               {item.label}
             </a>
             {item.children && (
-              <ul class="ml-3 border-l border-stone/40 pl-3">
+              <ul class="ml-3 border-l border-white/20 pl-3">
                 {item.children.map((c) => (
                   <li>
-                    <a href={c.href} class="block py-1.5 text-sm text-charcoal">
+                    <a href={c.href} class="block py-1.5 text-sm text-paper/80 hover:text-accent">
                       {c.label}
                     </a>
                   </li>

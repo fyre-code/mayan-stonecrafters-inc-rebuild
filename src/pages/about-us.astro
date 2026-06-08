@@ -30,11 +30,12 @@ const expertise = [
 <BaseLayout seo={seo}>
   <Hero eyebrow="Who We Are" title="About Us" compact={true} />
 
-  <section class="mx-auto max-w-4xl px-4 py-16">
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid gap-10 lg:grid-cols-[1fr_minmax(0,400px)]">
+      <div>
     <h2 class="font-display text-2xl md:text-3xl">
       #1 Countertop Installation Contractors in Brevard County, FL
     </h2>
-    <div class="mt-3 h-1 w-16 bg-accent"></div>
     <div class="mt-6 space-y-5 text-lg leading-relaxed text-charcoal/85">
       <p>
         Mayan Stonecrafters, Inc. is a family owned and operated business servicing the Brevard County
@@ -63,13 +64,28 @@ const expertise = [
         to meet all desired preferences.
       </p>
     </div>
+      </div>
+      <div class="space-y-6">
+        <img
+          src="/images/about-kitchen.jpg"
+          alt="Custom kitchen with stone countertops by Mayan Stonecrafters"
+          class="reveal w-full rounded-xl object-cover shadow-lg"
+          loading="lazy"
+        />
+        <img
+          src="/images/about-detail.jpg"
+          alt="Close-up of custom stone countertop detail by Mayan Stonecrafters"
+          class="reveal w-full rounded-xl object-cover shadow-lg"
+          loading="lazy"
+        />
+      </div>
+    </div>
   </section>
 
   <StatsBar />
 
   <section class="mx-auto max-w-5xl px-4 py-16">
     <h2 class="text-3xl md:text-4xl">How We Work</h2>
-    <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
     <p class="mt-5 max-w-3xl leading-relaxed text-charcoal/85">
       Mayan Stonecrafters is a company dedicated to transforming spaces with elegance and quality
       through the creation and installation of marble kitchens. We focus on excellence in every project
@@ -91,7 +107,6 @@ const expertise = [
   <section class="bg-stone-soft/40 py-16">
     <div class="mx-auto max-w-5xl px-4">
       <h2 class="text-3xl md:text-4xl">Our Expertise</h2>
-      <div class="accent-bar mt-4 h-1 w-24 bg-accent"></div>
       <p class="mt-5 max-w-3xl leading-relaxed text-charcoal/85">
         At Mayan Stonecrafters, we specialize in creating unique, custom kitchens that stand out from
         the rest, using premium materials including marble.

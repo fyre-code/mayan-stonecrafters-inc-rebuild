@@ -10,6 +10,7 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const c = serviceContent[slug as string];
+const introImage = `/images/${slug}-intro.jpg`;
 
 const seo = {
   title: c.seoTitle,
@@ -26,5 +27,7 @@ const seo = {
     intro={c.intro}
     sections={c.sections}
     faqs={c.faqs}
+    introImage={introImage}
+    introImageAlt={`${c.title} by Mayan Stonecrafters in Melbourne, FL`}
   />
 </BaseLayout>
