@@ -4,9 +4,7 @@ import Hero from "../../components/Hero.astro";
 import StatsBar from "../../components/StatsBar.astro";
 import ContactInfo from "../../components/ContactInfo.astro";
 import CtaBand from "../../components/CtaBand.astro";
-import ServiceCard from "../../components/ServiceCard.astro";
 import { areas } from "../../data/areas";
-import { services } from "../../data/business";
 
 export function getStaticPaths() {
   return areas.map((a) => ({ params: { area: a.slug }, props: { area: a } }));
@@ -66,8 +64,9 @@ const seo = {
       <div class="mt-10 grid gap-6 md:grid-cols-2">
         {
           area.whyReasons.map((r) => (
-            <div class="reveal rounded-lg border border-stone/40 bg-paper p-7">
-              <h3 class="font-display text-xl text-accent">{r.title}</h3>
+            <div class="reveal rounded-lg border border-stone/40 bg-paper p-7 text-center">
+              <img src={r.icon} alt={`${r.title} icon`} class="mx-auto h-40 w-40" loading="lazy" />
+              <h3 class="mt-4 font-display text-xl text-accent">{r.title}</h3>
               <p class="mt-3 text-charcoal/85">{r.body}</p>
             </div>
           ))
@@ -76,17 +75,40 @@ const seo = {
     </div>
   </section>
 
-  <!-- Services available in this area -->
-  <section class="mx-auto max-w-7xl px-4 py-16">
-    <h2 class="text-3xl md:text-4xl">Our Services in {area.name}</h2>
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((s) => <ServiceCard title={s.title} href={`/services/${s.slug}/`} />)}
+  <!-- Contact form -->
+  <section class="mx-auto max-w-3xl px-4 py-16">
+    <h2 class="text-center font-display text-2xl md:text-3xl">Request a Free Estimate in {area.name}</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-center text-charcoal/80">
+      Fill out the form below and one of our consultants will get back to you.
+    </p>
+    <div class="mt-8">
+      <iframe
+        id="hyppo-area-form"
+        src="https://hyppohq.io/f/mayan-stonecrafters/contact-mayn-stonecrafters?embed=true&theme=light"
+        title={`Contact Mayan Stonecrafters about ${area.name}`}
+        loading="lazy"
+        scrolling="no"
+        allowfullscreen
+        style="width:100%;max-width:100%;border:none;overflow:hidden;min-height:700px;display:block;"
+      ></iframe>
+      <script is:inline>
+        window.addEventListener("message", function (e) {
+          if (
+            e.data &&
+            e.data.type === "hyppo-form-resize" &&
+            e.data.slug === "contact-mayn-stonecrafters"
+          ) {
+            var f = document.getElementById("hyppo-area-form");
+            if (f) f.style.height = e.data.height + "px";
+          }
+        });
+      </script>
     </div>
   </section>
 
   <section class="mx-auto max-w-5xl px-4 py-16">
     <h2 class="text-center font-display text-2xl md:text-3xl">
-      Serving {area.name} &amp; All of Brevard County
+      {area.slug === "brevard-county" ? "Serving All of Brevard County" : `Serving ${area.name} & All of Brevard County`}
     </h2>
     <p class="mx-auto mt-4 max-w-2xl text-center text-charcoal/80">
       Contact us now to get a free estimate for your {area.name} project.
