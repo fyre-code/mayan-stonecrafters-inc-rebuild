@@ -16,7 +16,7 @@ export interface Area {
 
 const ICONS = {
   localCraftsmen:
-    "https://pbrlhyansxjdndccwtau.supabase.co/storage/v1/object/public/media-public/b042dbdc-ac03-47b9-8d0f-927de97de461/root/1780893734789_local-craftsmen-icon.png",
+    "https://pbrlhyansxjdndccwtau.supabase.co/storage/v1/object/public/media-public/b042dbdc-ac03-47b9-8d0f-927de97de461/root/1780895002323_local-craftsmen-icon.png",
   inShopFabrication:
     "https://pbrlhyansxjdndccwtau.supabase.co/storage/v1/object/public/media-public/b042dbdc-ac03-47b9-8d0f-927de97de461/root/1780893699147_in-shop-fabrication-icon.png",
   residentialCommercial:
