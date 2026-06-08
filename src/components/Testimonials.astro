@@ -1,0 +1,36 @@
+---
+// Hyppo testimonials widget. Uses a direct iframe + resize listener instead of
+// the self-executing snippet, because Astro bundles <script> tags and breaks
+// the snippet's document.currentScript insertion.
+interface Props {
+  heading?: string;
+}
+const { heading = "What Our Clients Say" } = Astro.props;
+---
+
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <h2 class="text-center text-3xl md:text-4xl">{heading}</h2>
+  <div class="mt-10">
+    <iframe
+      id="hyppo-testimonials"
+      src="https://hyppohq.io/w/mayan-stonecrafters/testimonials?embed=true"
+      title="Mayan Stonecrafters testimonials"
+      loading="lazy"
+      scrolling="no"
+      allowfullscreen
+      style="width:100%;max-width:100%;border:none;overflow:hidden;min-height:400px;display:block;"
+    ></iframe>
+    <script is:inline>
+      window.addEventListener("message", function (e) {
+        if (
+          e.data &&
+          e.data.type === "hyppo-widget-resize" &&
+          e.data.slug === "testimonials"
+        ) {
+          var f = document.getElementById("hyppo-testimonials");
+          if (f) f.style.height = e.data.height + "px";
+        }
+      });
+    </script>
+  </div>
+</section>

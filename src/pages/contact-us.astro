@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import ContactInfo from "../components/ContactInfo.astro";
+import Testimonials from "../components/Testimonials.astro";
 import { business } from "../data/business";
 
 const seo = {
@@ -57,4 +58,6 @@ const seo = {
       <p class="mt-3 text-charcoal/80">{business.payments.join(" · ")}</p>
     </div>
   </section>
+
+  <Testimonials />
 </BaseLayout>
