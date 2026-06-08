@@ -15,7 +15,13 @@ const seo = {
 ---
 
 <BaseLayout seo={seo}>
-  <Hero eyebrow="Our Work" title="Gallery" compact={true} />
+  <Hero
+    eyebrow="Our Work"
+    title="Gallery"
+    image="/images/home-image-3.jpg"
+    imageAlt="Kitchen with custom stone countertops by Mayan Stonecrafters"
+    compact={true}
+  />
 
   <section class="mx-auto max-w-7xl px-4 py-16">
     <p class="max-w-3xl text-lg leading-relaxed text-charcoal/85">
@@ -25,7 +31,23 @@ const seo = {
     </p>
 
     <div class="mt-10">
-      <script src="https://hyppohq.io/api/v1/widgets/embed/mayan-stonecrafters/gallery" async></script>
+      <iframe
+        id="hyppo-gallery"
+        src="https://hyppohq.io/w/mayan-stonecrafters/gallery?embed=true"
+        title="Mayan Stonecrafters gallery"
+        loading="lazy"
+        scrolling="no"
+        allowfullscreen
+        style="width:100%;max-width:100%;border:none;overflow:hidden;min-height:600px;display:block;"
+      ></iframe>
+      <script is:inline>
+        window.addEventListener("message", function (e) {
+          if (e.data && e.data.type === "hyppo-widget-resize" && e.data.slug === "gallery") {
+            var f = document.getElementById("hyppo-gallery");
+            if (f) f.style.height = e.data.height + "px";
+          }
+        });
+      </script>
       <noscript>
         <p class="text-charcoal/80">
           View more of our work on

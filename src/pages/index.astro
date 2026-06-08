@@ -2,11 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import StatsBar from "../components/StatsBar.astro";
-import Badges from "../components/Badges.astro";
 import BrandLogos from "../components/BrandLogos.astro";
-import ServiceCard from "../components/ServiceCard.astro";
 import CtaBand from "../components/CtaBand.astro";
-import { services } from "../data/business";
+import { business } from "../data/business";
 
 const seo = {
   title: "Mayan Stonecrafters, Inc. | Countertops in Melbourne, FL",
@@ -38,14 +36,17 @@ const products = [
 const process = [
   {
     title: "Concept",
+    icon: "https://pbrlhyansxjdndccwtau.supabase.co/storage/v1/object/public/media-public/b042dbdc-ac03-47b9-8d0f-927de97de461/root/1780882851323_concept-icon.png",
     body: "We believe beauty is important, but so is functionality, which is why we work closely with our customers to make sure their kitchen is both practical and beautiful.",
   },
   {
     title: "Design",
+    icon: "https://pbrlhyansxjdndccwtau.supabase.co/storage/v1/object/public/media-public/b042dbdc-ac03-47b9-8d0f-927de97de461/root/1780882855811_design-icon.png",
     body: "We believe that design is an integral part of the process of creating the perfect kitchen, and we work tirelessly to ensure that every detail is carefully thought out and executed.",
   },
   {
     title: "Development",
+    icon: "https://pbrlhyansxjdndccwtau.supabase.co/storage/v1/object/public/media-public/b042dbdc-ac03-47b9-8d0f-927de97de461/root/1780882860576_development-icon.png",
     body: "We are proud of our team of highly trained and experienced professionals, and we continue to invest in their training and development to ensure that they always provide the best service to our clients.",
   },
 ];
@@ -84,6 +85,45 @@ const faqs = [
 
   <StatsBar />
 
+  <!-- Custom Made Countertops | Melbourne (marble background section) -->
+  <section class="relative isolate overflow-hidden py-20 text-paper">
+    <img
+      src="/images/home-marble-section.jpg"
+      alt="Polished marble surface"
+      class="absolute inset-0 -z-10 h-full w-full object-cover"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 -z-10 bg-charcoal/70"></div>
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h2 class="text-3xl md:text-4xl">Custom Made Countertops | Melbourne</h2>
+      <h2 class="mt-3 text-3xl md:text-4xl">
+        The Ultimate Destination for Your Dream Kitchen and Bath - #1 Fabricators and Installers in
+        Brevard County
+      </h2>
+      <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-paper/85">
+        Thinking of updating your countertops? At Mayan Stonecrafters, Inc. we are committed to
+        delivering stellar countertops and elite installer services in Brevard County and surrounding
+        areas. By combining our expertise, our team will develop an in-depth understanding of your
+        needs and will lead you to select the most suitable material for your countertops. We carry a
+        wide variety of quartz as well as beautiful natural stone granite, quartzite, and marble.
+      </p>
+      <div class="mx-auto mt-9 flex max-w-xs flex-col items-stretch gap-4">
+        <a
+          href={business.phoneHref}
+          class="inline-flex items-center justify-center rounded bg-accent px-7 py-3 font-bold uppercase tracking-wide text-paper transition-transform hover:scale-105"
+        >
+          Call {business.phone}
+        </a>
+        <a
+          href={business.contactFormUrl}
+          class="inline-flex items-center justify-center rounded border border-paper/40 px-7 py-3 font-bold uppercase tracking-wide text-paper transition-colors hover:border-accent hover:text-accent"
+        >
+          Message Us
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Our Service -->
   <section class="mx-auto max-w-7xl px-4 py-20">
     <h2 class="reveal mx-auto max-w-3xl text-3xl md:text-4xl">
@@ -110,38 +150,42 @@ const faqs = [
     </div>
   </section>
 
-  <BrandLogos />
-
-  <!-- Our Services grid -->
+  <!-- Our Services (Expertise pillars) -->
   <section class="bg-stone-soft/40 py-20">
-    <div class="mx-auto max-w-7xl px-4">
+    <div class="mx-auto max-w-5xl px-4 text-center">
       <h2 class="reveal text-3xl md:text-4xl">Our Services</h2>
-      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-10 grid gap-8 sm:grid-cols-3">
         {
-          services.map((s) => (
-            <ServiceCard title={s.title} href={`/services/${s.slug}/`} />
+          ["Idea & Concept", "Accuracy", "Execution"].map((pillar) => (
+            <div class="reveal">
+              <h3 class="font-display text-2xl text-accent">{pillar}</h3>
+            </div>
           ))
         }
       </div>
+      <p class="reveal mx-auto mt-10 max-w-3xl font-display text-xl text-charcoal md:text-2xl">
+        "Let us make your kitchen the center of attention in your home with our unique design and
+        exceptional craftsmanship."
+      </p>
     </div>
   </section>
 
-  <Badges />
+  <BrandLogos />
 
   <!-- How We Work -->
   <section class="mx-auto max-w-7xl px-4 py-20">
     <h2 class="reveal text-3xl md:text-4xl">How We Work</h2>
-    <p class="reveal mt-4 max-w-3xl text-charcoal/80">
+    <p class="reveal mx-auto mt-4 max-w-3xl text-center text-charcoal/80">
       Mayan Stonecrafters is a company dedicated to transforming spaces with elegance and quality
       through the creation and installation of marble kitchens. We focus on excellence in every
       project we undertake and work with passion to ensure that every detail is perfect.
     </p>
     <div class="mt-12 grid gap-8 md:grid-cols-3">
       {
-        process.map((p, i) => (
-          <div class="reveal">
-            <span class="font-display text-5xl text-stone">0{i + 1}</span>
-            <h3 class="mt-2 font-display text-2xl">{p.title}</h3>
+        process.map((p) => (
+          <div class="reveal flex flex-col items-center text-center">
+            <img src={p.icon} alt={`${p.title} icon`} class="h-28 w-28" loading="lazy" />
+            <h3 class="mt-4 font-display text-2xl">{p.title}</h3>
             <p class="mt-3 text-charcoal/80">{p.body}</p>
           </div>
         ))

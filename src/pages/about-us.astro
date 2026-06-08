@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import StatsBar from "../components/StatsBar.astro";
-import Badges from "../components/Badges.astro";
 import CtaBand from "../components/CtaBand.astro";
 
 const seo = {
@@ -86,7 +85,7 @@ const expertise = [
 
   <section class="mx-auto max-w-5xl px-4 py-16">
     <h2 class="text-3xl md:text-4xl">How We Work</h2>
-    <p class="mt-5 max-w-3xl leading-relaxed text-charcoal/85">
+    <p class="mx-auto mt-5 max-w-3xl text-center leading-relaxed text-charcoal/85">
       Mayan Stonecrafters is a company dedicated to transforming spaces with elegance and quality
       through the creation and installation of marble kitchens. We focus on excellence in every project
       we undertake and work with passion to ensure that every detail is perfect.
@@ -124,6 +123,5 @@ const expertise = [
     </div>
   </section>
 
-  <Badges />
   <CtaBand />
 </BaseLayout>
